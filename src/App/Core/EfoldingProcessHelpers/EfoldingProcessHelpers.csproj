@@ -1,0 +1,165 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{32391B01-F12A-46A0-9663-AD7E5D1D7D5C}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>GridProteinFolding.Core.eFolding</RootNamespace>
+    <AssemblyName>GridProteinFolding.Core.eFolding</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <Prefer32Bit>false</Prefer32Bit>
+    <DocumentationFile>..\..\..\Documentation\GridProteinFolding.Core.eFolding.XML</DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>x86</PlatformTarget>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <PlatformTarget>x86</PlatformTarget>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <PlatformTarget>x86</PlatformTarget>
+    <OutputPath>bin\x86\Release\</OutputPath>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>true</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>efolding.pfx</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="CalculatingEnergy.cs" />
+    <Compile Include="Classification\ClassificationMotion.cs" />
+    <Compile Include="Classification\CrankShaft.cs" />
+    <Compile Include="Classification\Ends.cs" />
+    <Compile Include="Classification\Kink.cs" />
+    <Compile Include="Classification\Straight.cs" />
+    <Compile Include="Const.cs" />
+    <Compile Include="EnergeticMatrix.cs" />
+    <Compile Include="GlobalSuppressions.cs" />
+    <Compile Include="InitVariables.cs" />
+    <Compile Include="Marshalling.cs" />
+    <Compile Include="Maths\MathExtesion.cs" />
+    <Compile Include="MonteCarlo\MontaCarloBase.cs" />
+    <Compile Include="MonteCarlo\MonteCarloTsallis.cs" />
+    <Compile Include="PrinterMessages.cs" />
+    <Compile Include="Recorder.cs" />
+    <Compile Include="Structs\FakeProtein.cs" />
+    <Compile Include="IO\Directory.cs" />
+    <Compile Include="IO\Frequency.cs" />
+    <Compile Include="IO\Stream.cs" />
+    <Compile Include="Main.cs" />
+    <Compile Include="Maths\Maths4Simulation.cs" />
+    <Compile Include="Maths\ScalarProduct.cs" />
+    <Compile Include="MonteCarlo\MonteCarloBoltzmann.cs" />
+    <Compile Include="MoveSet\BaseMoves.cs" />
+    <Compile Include="MoveSet\LatticeMoves.cs" />
+    <Compile Include="MoveSet\MoveCrankshaft.cs" />
+    <Compile Include="MoveSet\MoveEnds.cs" />
+    <Compile Include="MoveSet\MoveKink.cs" />
+    <Compile Include="MoveSet\MoveSet.cs" />
+    <Compile Include="Parse\CheckContruction.cs" />
+    <Compile Include="Parse\CheckFile.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="IO\Resource1.Designer.cs">
+      <DependentUpon>Resource.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Simulation.cs" />
+    <Compile Include="Structs\Base.cs" />
+    <Compile Include="Structs\Chain.cs" />
+    <Compile Include="Structs\ConsoleOut.cs" />
+    <Compile Include="Structs\Environment.cs" />
+    <Compile Include="Structs\Point.cs" />
+    <Compile Include="Structs\Protein.cs" />
+    <Compile Include="Structs\Queue.cs" />
+    <Compile Include="Structs\Structs.cs" />
+    <Compile Include="Structs\TemporaryChain.cs" />
+    <Compile Include="Structs\TypeE.cs" />
+    <Compile Include="Targets.cs" />
+    <Compile Include="Temperature.cs" />
+    <Compile Include="Transformation\GhostStruct.cs" />
+    <Compile Include="Transformation\NativeStruct.cs" />
+    <Compile Include="Transformation\Transition.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="IO\Resource.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resource1.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="efolding.pfx" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Middle\Helpers\ConfigurationHelpers\ConfigurationHelpers.csproj">
+      <Project>{07cf19d8-7431-4442-8fb0-c87844b72cc1}</Project>
+      <Name>ConfigurationHelpers</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Middle\Helpers\EnumsHelpers\EnumsHelpers.csproj">
+      <Project>{bbae8249-8270-4071-8c93-67b64e342bc1}</Project>
+      <Name>EnumsHelpers</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Middle\Helpers\IOHelpers\IOHelpers.csproj">
+      <Project>{b6866011-e04a-4de1-8612-d90bf87c4ec9}</Project>
+      <Name>IOHelpers</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Middle\Helpers\LoggingHelpers\LoggingHelpers.csproj">
+      <Project>{edd6c201-9ae8-4ec8-8fc9-0cd04d8c1e31}</Project>
+      <Name>LoggingHelpers</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Middle\Helpers\RandomHelpers\RandomHelpers.csproj">
+      <Project>{7a40e9ff-dcb8-4cca-8638-a050e3fc4b62}</Project>
+      <Name>RandomHelpers</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="cd4faac57cc64d799e7e646e6fa3a121" Name="Diagram1" ZoomLevel="71">
+        <EntityTypeShape EntityType="GridProteinFoldingModel.ClientCurrentVersion" Width="1.5" PointX="0.75" PointY="0.75" />
+        <EntityTypeShape EntityType="GridProteinFoldingModel.ConfigApp" Width="1.5" PointX="0.75" PointY="11.5" />
+        <EntityTypeShape EntityType="GridProteinFoldingModel.Configuration" Width="1.5" PointX="5.25" PointY="16.875" />
+        <EntityTypeShape EntityType="GridProteinFoldingModel.DataToProcess" Width="1.5" PointX="8.25" PointY="10.375" />
+        <EntityTypeShape EntityType="GridProteinFoldingModel.DataToResult" Width="1.5" PointX="5.25" PointY="7" />
+        <EntityTypeShape EntityType="GridProteinFoldingModel.Model" Width="1.5" PointX="5.25" PointY="4.375" />
+        <EntityTypeShape EntityType="GridProteinFoldingModel.ModelType" Width="1.5" PointX="6" PointY="2" />
+        <EntityTypeShape EntityType="GridProteinFoldingModel.Output" Width="1.5" PointX="5.25" PointY="23.125" />
+        <EntityTypeShape EntityType="GridProteinFoldingModel.Process" Width="1.5" PointX="3" PointY="9.75" />
+        <EntityTypeShape EntityType="GridProteinFoldingModel.ProcessLog" Width="1.5" PointX="5.25" PointY="20.125" />
+        <EntityTypeShape EntityType="GridProteinFoldingModel.Status" Width="1.5" PointX="0.75" PointY="8.75" />
+        <EntityTypeShape EntityType="GridProteinFoldingModel.Targets" Width="1.5" PointX="6" PointY="12.5" />
+        <EntityTypeShape EntityType="GridProteinFoldingModel.TargetsCoordinates" Width="1.5" PointX="8.25" PointY="15.5" />
+        <EntityTypeShape EntityType="GridProteinFoldingModel.Blob" Width="1.5" PointX="5.25" PointY="9.5" />
+        <AssociationConnector Association="GridProteinFoldingModel.FK_Process_ConfigApp" />
+        <AssociationConnector Association="GridProteinFoldingModel.FK_Configuration_Process" />
+        <AssociationConnector Association="GridProteinFoldingModel.FK_DataToProcess_ModelType" />
+        <AssociationConnector Association="GridProteinFoldingModel.FK_DataToProcess_Process" />
+        <AssociationConnector Association="GridProteinFoldingModel.FK_DataToProcess_Targets" />
+        <AssociationConnector Association="GridProteinFoldingModel.FK_DataToResult_Process" />
+        <AssociationConnector Association="GridProteinFoldingModel.FK_Model_Process" />
+        <AssociationConnector Association="GridProteinFoldingModel.FK_Output_Process" />
+        <AssociationConnector Association="GridProteinFoldingModel.FK_Blob_Process" />
+        <AssociationConnector Association="GridProteinFoldingModel.FK_Process_Process" />
+        <AssociationConnector Association="GridProteinFoldingModel.FK_Process_Status" />
+        <AssociationConnector Association="GridProteinFoldingModel.FK_ProcessLog_Process" />
+        <AssociationConnector Association="GridProteinFoldingModel.FK_targetsCoordinates_Targets" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

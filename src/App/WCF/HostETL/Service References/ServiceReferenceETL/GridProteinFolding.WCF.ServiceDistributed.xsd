@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/GridProteinFolding.WCF.ServiceDistributed" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/GridProteinFolding.WCF.ServiceDistributed" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import namespace="http://schemas.datacontract.org/2004/07/GridProteinFolding.Middle.Helpers.ConfigurationHelpers" />
+  <xs:complexType name="Service.ParamWcf">
+    <xs:sequence>
+      <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/GridProteinFolding.Middle.Helpers.ConfigurationHelpers" minOccurs="0" name="param" nillable="true" type="q1:Param" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Service.ParamWcf" nillable="true" type="tns:Service.ParamWcf" />
+</xs:schema>

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="cbaf4e41-366c-484d-84d3-c3ee1e798711" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:8080/GridProteinFolding/ServiceDistributed/ServiceMex/mex" Protocol="mex" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="service.wsdl" MetadataType="Wsdl" ID="038323e0-cf61-4b54-8588-e1511aab88ac" SourceId="1" SourceUrl="http://localhost:8080/GridProteinFolding/ServiceDistributed/ServiceMex/mex" />
+    <MetadataFile FileName="service.xsd" MetadataType="Schema" ID="99ca216f-37c1-4556-a1df-5057fee3b7bf" SourceId="1" SourceUrl="http://localhost:8080/GridProteinFolding/ServiceDistributed/ServiceMex/mex" />
+    <MetadataFile FileName="service1.xsd" MetadataType="Schema" ID="f3419103-b5e8-4a7c-8d45-38e3a0f3e8e1" SourceId="1" SourceUrl="http://localhost:8080/GridProteinFolding/ServiceDistributed/ServiceMex/mex" />
+    <MetadataFile FileName="GridProteinFolding.Services.DistributedService.xsd" MetadataType="Schema" ID="279a09d1-bd5b-4846-b174-738a4e4ba519" SourceId="1" SourceUrl="http://localhost:8080/GridProteinFolding/ServiceDistributed/ServiceMex/mex" />
+    <MetadataFile FileName="GridProteinFolding.WCF.ServiceDistributed.xsd" MetadataType="Schema" ID="d997f356-5b0f-43ad-999d-c81543798145" SourceId="1" SourceUrl="http://localhost:8080/GridProteinFolding/ServiceDistributed/ServiceMex/mex" />
+    <MetadataFile FileName="GridProteinFolding.Middle.Helpers.ConfigurationHelpers.xsd" MetadataType="Schema" ID="ae06c51e-8b85-4236-8a90-6fef5a96689f" SourceId="1" SourceUrl="http://localhost:8080/GridProteinFolding/ServiceDistributed/ServiceMex/mex" />
+    <MetadataFile FileName="GridProteinFolding.Middle.Helpers.EnumsHelpers.xsd" MetadataType="Schema" ID="4e893fc9-23d1-4ac8-adcb-3ff2be83fa8a" SourceId="1" SourceUrl="http://localhost:8080/GridProteinFolding/ServiceDistributed/ServiceMex/mex" />
+    <MetadataFile FileName="Arrays.xsd" MetadataType="Schema" ID="4bd58483-ae0d-4fc5-86b9-aab66fcd7bdd" SourceId="1" SourceUrl="http://localhost:8080/GridProteinFolding/ServiceDistributed/ServiceMex/mex" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

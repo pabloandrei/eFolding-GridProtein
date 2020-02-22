@@ -1,0 +1,191 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="Service" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsp:Policy wsu:Id="NetTcpBinding_IService_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <msb:BinaryEncoding xmlns:msb="http://schemas.microsoft.com/ws/06/2004/mspolicy/netbinary1" />
+        <wsaw:UsingAddressing />
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import namespace="http://tempuri.org/" />
+      <xsd:import namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import namespace="http://schemas.datacontract.org/2004/07/GridProteinFolding.Services.DistributedService" />
+      <xsd:import namespace="http://schemas.datacontract.org/2004/07/GridProteinFolding.WCF.ServiceDistributed" />
+      <xsd:import namespace="http://schemas.datacontract.org/2004/07/GridProteinFolding.Middle.Helpers.ConfigurationHelpers" />
+      <xsd:import namespace="http://schemas.datacontract.org/2004/07/GridProteinFolding.Middle.Helpers.EnumsHelpers" />
+      <xsd:import namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="IService_Echo_InputMessage">
+    <wsdl:part name="parameters" element="tns:Echo" />
+  </wsdl:message>
+  <wsdl:message name="IService_Echo_OutputMessage">
+    <wsdl:part name="parameters" element="tns:EchoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService_GetOneProcess_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetOneProcess" />
+  </wsdl:message>
+  <wsdl:message name="IService_GetOneProcess_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetOneProcessResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService_GetOneProcessGui_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetOneProcessGui" />
+  </wsdl:message>
+  <wsdl:message name="IService_GetOneProcessGui_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetOneProcessGuiResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService_GetOneProcessGuiForETL_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetOneProcessGuiForETL" />
+  </wsdl:message>
+  <wsdl:message name="IService_GetOneProcessGuiForETL_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetOneProcessGuiForETLResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService_SetOneProcess_InputMessage">
+    <wsdl:part name="parameters" element="tns:SetOneProcess" />
+  </wsdl:message>
+  <wsdl:message name="IService_SetOneProcess_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SetOneProcessResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService_SetOneProcessByGuid_InputMessage">
+    <wsdl:part name="parameters" element="tns:SetOneProcessByGuid" />
+  </wsdl:message>
+  <wsdl:message name="IService_SetOneProcessByGuid_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SetOneProcessByGuidResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService_GetStatus_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetStatus" />
+  </wsdl:message>
+  <wsdl:message name="IService_GetStatus_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetStatusResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService_GetGuidsToApplications_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetGuidsToApplications" />
+  </wsdl:message>
+  <wsdl:message name="IService_GetGuidsToApplications_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetGuidsToApplicationsResponse" />
+  </wsdl:message>
+  <wsdl:portType name="IService">
+    <wsdl:operation name="Echo">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService/Echo" message="tns:IService_Echo_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService/EchoResponse" message="tns:IService_Echo_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetOneProcess">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService/GetOneProcess" message="tns:IService_GetOneProcess_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService/GetOneProcessResponse" message="tns:IService_GetOneProcess_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetOneProcessGui">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService/GetOneProcessGui" message="tns:IService_GetOneProcessGui_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService/GetOneProcessGuiResponse" message="tns:IService_GetOneProcessGui_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetOneProcessGuiForETL">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService/GetOneProcessGuiForETL" message="tns:IService_GetOneProcessGuiForETL_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService/GetOneProcessGuiForETLResponse" message="tns:IService_GetOneProcessGuiForETL_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SetOneProcess">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService/SetOneProcess" message="tns:IService_SetOneProcess_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService/SetOneProcessResponse" message="tns:IService_SetOneProcess_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SetOneProcessByGuid">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService/SetOneProcessByGuid" message="tns:IService_SetOneProcessByGuid_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService/SetOneProcessByGuidResponse" message="tns:IService_SetOneProcessByGuid_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetStatus">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService/GetStatus" message="tns:IService_GetStatus_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService/GetStatusResponse" message="tns:IService_GetStatus_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetGuidsToApplications">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService/GetGuidsToApplications" message="tns:IService_GetGuidsToApplications_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService/GetGuidsToApplicationsResponse" message="tns:IService_GetGuidsToApplications_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="NetTcpBinding_IService" type="tns:IService">
+    <wsp:PolicyReference URI="#NetTcpBinding_IService_policy" />
+    <soap12:binding transport="http://schemas.microsoft.com/soap/tcp" />
+    <wsdl:operation name="Echo">
+      <soap12:operation soapAction="http://tempuri.org/IService/Echo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetOneProcess">
+      <soap12:operation soapAction="http://tempuri.org/IService/GetOneProcess" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetOneProcessGui">
+      <soap12:operation soapAction="http://tempuri.org/IService/GetOneProcessGui" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetOneProcessGuiForETL">
+      <soap12:operation soapAction="http://tempuri.org/IService/GetOneProcessGuiForETL" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetOneProcess">
+      <soap12:operation soapAction="http://tempuri.org/IService/SetOneProcess" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetOneProcessByGuid">
+      <soap12:operation soapAction="http://tempuri.org/IService/SetOneProcessByGuid" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetStatus">
+      <soap12:operation soapAction="http://tempuri.org/IService/GetStatus" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetGuidsToApplications">
+      <soap12:operation soapAction="http://tempuri.org/IService/GetGuidsToApplications" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="Service">
+    <wsdl:port name="NetTcpBinding_IService" binding="tns:NetTcpBinding_IService">
+      <soap12:address location="net.tcp://localhost:1111/GridProteinFolding/ServiceDistributed/Service/" />
+      <wsa10:EndpointReference>
+        <wsa10:Address>net.tcp://localhost:1111/GridProteinFolding/ServiceDistributed/Service/</wsa10:Address>
+        <Identity xmlns="http://schemas.xmlsoap.org/ws/2006/02/addressingidentity">
+          <Dns>localhost</Dns>
+        </Identity>
+      </wsa10:EndpointReference>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

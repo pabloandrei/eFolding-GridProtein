@@ -1,0 +1,1035 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="GridProteinFoldingModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'GridProteinFolding.dbo.Blob' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Blob">
+          <Key>
+            <PropertyRef Name="process_guid" />
+          </Key>
+          <Property Name="process_guid" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="blob" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="ClientCurrentVersion">
+          <Key>
+            <PropertyRef Name="currentVersion" />
+          </Key>
+          <Property Name="currentVersion" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ConfigApp">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="randomEqualOne" Type="float" Nullable="false" />
+          <Property Name="randomMagicNumber" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="dateTime" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Configuration">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="process_guid" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="mcStep" Type="int" Nullable="false" />
+          <Property Name="order" Type="int" Nullable="false" />
+          <Property Name="x" Type="int" Nullable="false" />
+          <Property Name="y" Type="int" Nullable="false" />
+          <Property Name="z" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="DataToProcess">
+          <Key>
+            <PropertyRef Name="process_guid" />
+          </Key>
+          <Property Name="loadDatFile" Type="bit" />
+          <Property Name="totalSitio" Type="int" Nullable="false" />
+          <Property Name="isem" Type="int" Nullable="false" />
+          <Property Name="maxInterations" Type="int" Nullable="false" />
+          <Property Name="process_guid" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="file" Type="text" />
+          <Property Name="maxMotionPeerIsem" Type="bigint" Nullable="false" />
+          <Property Name="modelType" Type="tinyint" Nullable="false" />
+          <Property Name="valueOfDelta" Type="float" Nullable="false" />
+          <Property Name="beta" Type="float" Nullable="false" />
+          <Property Name="targets_id" Type="int" />
+          <Property Name="temperature" Type="float" Nullable="false" />
+          <Property Name="recPathEvery" Type="int" Nullable="false" />
+          <Property Name="splitFileEvery" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="DataToResult">
+          <Key>
+            <PropertyRef Name="process_guid" />
+          </Key>
+          <Property Name="process_guid" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="valueDivResult" Type="int" Nullable="false" />
+          <Property Name="valueDiscard" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Model">
+          <Key>
+            <PropertyRef Name="process_guid" />
+            <PropertyRef Name="monomero" />
+          </Key>
+          <Property Name="process_guid" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="monomero" Type="tinyint" Nullable="false" />
+          <Property Name="value" Type="float" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ModelType">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="tinyint" Nullable="false" />
+          <Property Name="type" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Output">
+          <Key>
+            <PropertyRef Name="guid" />
+          </Key>
+          <Property Name="guid" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="evolution" Type="bit" Nullable="false" />
+          <Property Name="distribution" Type="bit" Nullable="false" />
+          <Property Name="configuration" Type="bit" Nullable="false" />
+          <Property Name="debug" Type="bit" Nullable="false" />
+          <Property Name="histogram" Type="bit" Nullable="false" />
+          <Property Name="trajectory" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Process">
+          <Key>
+            <PropertyRef Name="guid" />
+          </Key>
+          <Property Name="guid" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="guidFather" Type="uniqueidentifier" />
+          <Property Name="date" Type="datetime" Nullable="false" />
+          <Property Name="userId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="status_id" Type="tinyint" Nullable="false" />
+          <Property Name="emailNotification" Type="tinyint" Nullable="false" />
+          <Property Name="note" Type="nvarchar" MaxLength="50" />
+          <Property Name="label" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="crypt" Type="bit" Nullable="false" />
+          <Property Name="macAddr" Type="varchar" MaxLength="50" />
+          <Property Name="configApp_id" Type="int" Nullable="false" />
+          <Property Name="machineName" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="ProcessLog">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="process_guid" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="date" Type="datetime" Nullable="false" />
+          <Property Name="status_id" Type="tinyint" Nullable="false" />
+          <Property Name="who" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Status">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="tinyint" Nullable="false" />
+          <Property Name="description" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Targets">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="description" Type="varchar" MaxLength="250" />
+        </EntityType>
+        <EntityType Name="TargetsCoordinates">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="targets_id" Type="int" Nullable="false" />
+          <Property Name="value" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Blob_Process">
+          <End Role="Process" Type="Self.Process" Multiplicity="1" />
+          <End Role="Blob" Type="Self.Blob" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Process">
+              <PropertyRef Name="guid" />
+            </Principal>
+            <Dependent Role="Blob">
+              <PropertyRef Name="process_guid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Configuration_Process">
+          <End Role="Process" Type="Self.Process" Multiplicity="1" />
+          <End Role="Configuration" Type="Self.Configuration" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Process">
+              <PropertyRef Name="guid" />
+            </Principal>
+            <Dependent Role="Configuration">
+              <PropertyRef Name="process_guid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DataToProcess_ModelType">
+          <End Role="ModelType" Type="Self.ModelType" Multiplicity="1" />
+          <End Role="DataToProcess" Type="Self.DataToProcess" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ModelType">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="DataToProcess">
+              <PropertyRef Name="modelType" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DataToProcess_Process">
+          <End Role="Process" Type="Self.Process" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="DataToProcess" Type="Self.DataToProcess" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Process">
+              <PropertyRef Name="guid" />
+            </Principal>
+            <Dependent Role="DataToProcess">
+              <PropertyRef Name="process_guid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DataToProcess_Targets">
+          <End Role="Targets" Type="Self.Targets" Multiplicity="0..1" />
+          <End Role="DataToProcess" Type="Self.DataToProcess" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Targets">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="DataToProcess">
+              <PropertyRef Name="targets_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DataToResult_Process">
+          <End Role="Process" Type="Self.Process" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="DataToResult" Type="Self.DataToResult" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Process">
+              <PropertyRef Name="guid" />
+            </Principal>
+            <Dependent Role="DataToResult">
+              <PropertyRef Name="process_guid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Model_Process">
+          <End Role="Process" Type="Self.Process" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Model" Type="Self.Model" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Process">
+              <PropertyRef Name="guid" />
+            </Principal>
+            <Dependent Role="Model">
+              <PropertyRef Name="process_guid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Output_Process">
+          <End Role="Process" Type="Self.Process" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Output" Type="Self.Output" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Process">
+              <PropertyRef Name="guid" />
+            </Principal>
+            <Dependent Role="Output">
+              <PropertyRef Name="guid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Process_ConfigApp">
+          <End Role="ConfigApp" Type="Self.ConfigApp" Multiplicity="1" />
+          <End Role="Process" Type="Self.Process" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ConfigApp">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Process">
+              <PropertyRef Name="configApp_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Process_Process">
+          <End Role="Process" Type="Self.Process" Multiplicity="0..1" />
+          <End Role="Process1" Type="Self.Process" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Process">
+              <PropertyRef Name="guid" />
+            </Principal>
+            <Dependent Role="Process1">
+              <PropertyRef Name="guidFather" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Process_Status">
+          <End Role="Status" Type="Self.Status" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Process" Type="Self.Process" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Status">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Process">
+              <PropertyRef Name="status_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProcessLog_Process">
+          <End Role="Process" Type="Self.Process" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="ProcessLog" Type="Self.ProcessLog" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Process">
+              <PropertyRef Name="guid" />
+            </Principal>
+            <Dependent Role="ProcessLog">
+              <PropertyRef Name="process_guid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_targetsCoordinates_Targets">
+          <End Role="Targets" Type="Self.Targets" Multiplicity="1" />
+          <End Role="TargetsCoordinates" Type="Self.TargetsCoordinates" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Targets">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="TargetsCoordinates">
+              <PropertyRef Name="targets_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="BunkFiles" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="baseDir" Type="varchar(max)" Mode="In" />
+          <Parameter Name="process_guid" Type="varchar(max)" Mode="In" />
+        </Function>
+        <Function Name="BunkFiles02" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="baseDir" Type="varchar(max)" Mode="In" />
+          <Parameter Name="process_guid" Type="varchar(max)" Mode="In" />
+        </Function>
+        <Function Name="ReturnValues" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="varchar(max)">
+          <Parameter Name="guid" Type="uniqueidentifier" Mode="In" />
+        </Function>
+        <EntityContainer Name="GridProteinFoldingModelStoreContainer">
+          <EntitySet Name="ClientCurrentVersion" EntityType="Self.ClientCurrentVersion" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ConfigApp" EntityType="Self.ConfigApp" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Configuration" EntityType="Self.Configuration" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DataToProcess" EntityType="Self.DataToProcess" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DataToResult" EntityType="Self.DataToResult" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Model" EntityType="Self.Model" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ModelType" EntityType="Self.ModelType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Output" EntityType="Self.Output" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Process" EntityType="Self.Process" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ProcessLog" EntityType="Self.ProcessLog" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Status" EntityType="Self.Status" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Targets" EntityType="Self.Targets" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TargetsCoordinates" EntityType="Self.TargetsCoordinates" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Blob" EntityType="Self.Blob" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+[Blob].[process_guid] AS [process_guid], 
+[Blob].[blob] AS [blob]
+FROM [dbo].[Blob] AS [Blob]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK_Blob_Process" Association="Self.FK_Blob_Process">
+            <End Role="Process" EntitySet="Process" />
+            <End Role="Blob" EntitySet="Blob" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Configuration_Process" Association="Self.FK_Configuration_Process">
+            <End Role="Process" EntitySet="Process" />
+            <End Role="Configuration" EntitySet="Configuration" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DataToProcess_ModelType" Association="Self.FK_DataToProcess_ModelType">
+            <End Role="ModelType" EntitySet="ModelType" />
+            <End Role="DataToProcess" EntitySet="DataToProcess" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DataToProcess_Process" Association="Self.FK_DataToProcess_Process">
+            <End Role="Process" EntitySet="Process" />
+            <End Role="DataToProcess" EntitySet="DataToProcess" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DataToProcess_Targets" Association="Self.FK_DataToProcess_Targets">
+            <End Role="Targets" EntitySet="Targets" />
+            <End Role="DataToProcess" EntitySet="DataToProcess" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DataToResult_Process" Association="Self.FK_DataToResult_Process">
+            <End Role="Process" EntitySet="Process" />
+            <End Role="DataToResult" EntitySet="DataToResult" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Model_Process" Association="Self.FK_Model_Process">
+            <End Role="Process" EntitySet="Process" />
+            <End Role="Model" EntitySet="Model" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Output_Process" Association="Self.FK_Output_Process">
+            <End Role="Process" EntitySet="Process" />
+            <End Role="Output" EntitySet="Output" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Process_ConfigApp" Association="Self.FK_Process_ConfigApp">
+            <End Role="ConfigApp" EntitySet="ConfigApp" />
+            <End Role="Process" EntitySet="Process" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Process_Process" Association="Self.FK_Process_Process">
+            <End Role="Process" EntitySet="Process" />
+            <End Role="Process1" EntitySet="Process" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Process_Status" Association="Self.FK_Process_Status">
+            <End Role="Status" EntitySet="Status" />
+            <End Role="Process" EntitySet="Process" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProcessLog_Process" Association="Self.FK_ProcessLog_Process">
+            <End Role="Process" EntitySet="Process" />
+            <End Role="ProcessLog" EntitySet="ProcessLog" />
+          </AssociationSet>
+          <AssociationSet Name="FK_targetsCoordinates_Targets" Association="Self.FK_targetsCoordinates_Targets">
+            <End Role="Targets" EntitySet="Targets" />
+            <End Role="TargetsCoordinates" EntitySet="TargetsCoordinates" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="GridProteinFoldingModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+        <EntityContainer Name="GridProteinFoldingEntities" annotation:LazyLoadingEnabled="true">
+          <FunctionImport Name="BunkFiles">
+            <Parameter Name="baseDir" Mode="In" Type="String" />
+            <Parameter Name="process_guid" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="BunkFiles02">
+            <Parameter Name="baseDir" Mode="In" Type="String" />
+            <Parameter Name="process_guid" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_alterdiagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="version" Mode="In" Type="Int32" />
+            <Parameter Name="definition" Mode="In" Type="Binary" />
+          </FunctionImport>
+          <FunctionImport Name="sp_creatediagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="version" Mode="In" Type="Int32" />
+            <Parameter Name="definition" Mode="In" Type="Binary" />
+          </FunctionImport>
+          <FunctionImport Name="sp_dropdiagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(GridProteinFoldingModel.sp_helpdiagramdefinition_Result)">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(GridProteinFoldingModel.sp_helpdiagrams_Result)">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_renamediagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="new_diagramname" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_upgraddiagrams" />
+          <EntitySet Name="ClientCurrentVersion" EntityType="GridProteinFoldingModel.ClientCurrentVersion" />
+          <EntitySet Name="ConfigApp" EntityType="GridProteinFoldingModel.ConfigApp" />
+          <EntitySet Name="Configuration" EntityType="GridProteinFoldingModel.Configuration" />
+          <EntitySet Name="DataToProcess" EntityType="GridProteinFoldingModel.DataToProcess" />
+          <EntitySet Name="DataToResult" EntityType="GridProteinFoldingModel.DataToResult" />
+          <EntitySet Name="Model" EntityType="GridProteinFoldingModel.Model" />
+          <EntitySet Name="ModelType" EntityType="GridProteinFoldingModel.ModelType" />
+          <EntitySet Name="Output" EntityType="GridProteinFoldingModel.Output" />
+          <EntitySet Name="Process" EntityType="GridProteinFoldingModel.Process" />
+          <EntitySet Name="ProcessLog" EntityType="GridProteinFoldingModel.ProcessLog" />
+          <EntitySet Name="Status" EntityType="GridProteinFoldingModel.Status" />
+          <EntitySet Name="Targets" EntityType="GridProteinFoldingModel.Targets" />
+          <EntitySet Name="TargetsCoordinates" EntityType="GridProteinFoldingModel.TargetsCoordinates" />
+          <EntitySet Name="Blob" EntityType="GridProteinFoldingModel.Blob" />
+          <AssociationSet Name="FK_Process_ConfigApp" Association="GridProteinFoldingModel.FK_Process_ConfigApp">
+            <End Role="ConfigApp" EntitySet="ConfigApp" />
+            <End Role="Process" EntitySet="Process" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Configuration_Process" Association="GridProteinFoldingModel.FK_Configuration_Process">
+            <End Role="Process" EntitySet="Process" />
+            <End Role="Configuration" EntitySet="Configuration" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DataToProcess_ModelType" Association="GridProteinFoldingModel.FK_DataToProcess_ModelType">
+            <End Role="ModelType" EntitySet="ModelType" />
+            <End Role="DataToProcess" EntitySet="DataToProcess" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DataToProcess_Process" Association="GridProteinFoldingModel.FK_DataToProcess_Process">
+            <End Role="Process" EntitySet="Process" />
+            <End Role="DataToProcess" EntitySet="DataToProcess" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DataToProcess_Targets" Association="GridProteinFoldingModel.FK_DataToProcess_Targets">
+            <End Role="Targets" EntitySet="Targets" />
+            <End Role="DataToProcess" EntitySet="DataToProcess" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DataToResult_Process" Association="GridProteinFoldingModel.FK_DataToResult_Process">
+            <End Role="Process" EntitySet="Process" />
+            <End Role="DataToResult" EntitySet="DataToResult" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Model_Process" Association="GridProteinFoldingModel.FK_Model_Process">
+            <End Role="Process" EntitySet="Process" />
+            <End Role="Model" EntitySet="Model" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Output_Process" Association="GridProteinFoldingModel.FK_Output_Process">
+            <End Role="Process" EntitySet="Process" />
+            <End Role="Output" EntitySet="Output" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Blob_Process" Association="GridProteinFoldingModel.FK_Blob_Process">
+            <End Role="Process" EntitySet="Process" />
+            <End Role="Blob" EntitySet="Blob" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Process_Process" Association="GridProteinFoldingModel.FK_Process_Process">
+            <End Role="Process" EntitySet="Process" />
+            <End Role="Process1" EntitySet="Process" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Process_Status" Association="GridProteinFoldingModel.FK_Process_Status">
+            <End Role="Status" EntitySet="Status" />
+            <End Role="Process" EntitySet="Process" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProcessLog_Process" Association="GridProteinFoldingModel.FK_ProcessLog_Process">
+            <End Role="Process" EntitySet="Process" />
+            <End Role="ProcessLog" EntitySet="ProcessLog" />
+          </AssociationSet>
+          <AssociationSet Name="FK_targetsCoordinates_Targets" Association="GridProteinFoldingModel.FK_targetsCoordinates_Targets">
+            <End Role="Targets" EntitySet="Targets" />
+            <End Role="TargetsCoordinates" EntitySet="TargetsCoordinates" />
+          </AssociationSet>
+          </EntityContainer>
+        <ComplexType Name="sp_helpdiagramdefinition_Result">
+          <Property Type="Int32" Name="version" Nullable="true" />
+          <Property Type="Binary" Name="definition" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="sp_helpdiagrams_Result">
+          <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
+          <Property Type="Int32" Name="OwnerID" Nullable="false" />
+        </ComplexType>
+        <EntityType Name="ClientCurrentVersion">
+          <Key>
+            <PropertyRef Name="currentVersion" />
+          </Key>
+          <Property Name="currentVersion" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="ConfigApp">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="randomEqualOne" Type="Double" Nullable="false" />
+          <Property Name="randomMagicNumber" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="dateTime" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="Process" Relationship="GridProteinFoldingModel.FK_Process_ConfigApp" FromRole="ConfigApp" ToRole="Process" />
+        </EntityType>
+        <EntityType Name="Configuration">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="process_guid" Type="Guid" Nullable="false" />
+          <Property Name="mcStep" Type="Int32" Nullable="false" />
+          <Property Name="order" Type="Int32" Nullable="false" />
+          <Property Name="x" Type="Int32" Nullable="false" />
+          <Property Name="y" Type="Int32" Nullable="false" />
+          <Property Name="z" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Process" Relationship="GridProteinFoldingModel.FK_Configuration_Process" FromRole="Configuration" ToRole="Process" />
+        </EntityType>
+        <EntityType Name="DataToProcess">
+          <Key>
+            <PropertyRef Name="process_guid" />
+          </Key>
+          <Property Name="loadDatFile" Type="Boolean" />
+          <Property Name="totalSitio" Type="Int32" Nullable="false" />
+          <Property Name="isem" Type="Int32" Nullable="false" />
+          <Property Name="maxInterations" Type="Int32" Nullable="false" />
+          <Property Name="process_guid" Type="Guid" Nullable="false" />
+          <Property Name="file" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="maxMotionPeerIsem" Type="Int64" Nullable="false" />
+          <Property Name="modelType" Type="Byte" Nullable="false" />
+          <Property Name="valueOfDelta" Type="Double" Nullable="false" />
+          <Property Name="beta" Type="Double" Nullable="false" />
+          <Property Name="targets_id" Type="Int32" />
+          <Property Name="temperature" Type="Double" Nullable="false" />
+          <Property Name="recPathEvery" Type="Int32" Nullable="false" />
+          <Property Name="splitFileEvery" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="ModelType1" Relationship="GridProteinFoldingModel.FK_DataToProcess_ModelType" FromRole="DataToProcess" ToRole="ModelType" />
+          <NavigationProperty Name="Process" Relationship="GridProteinFoldingModel.FK_DataToProcess_Process" FromRole="DataToProcess" ToRole="Process" />
+          <NavigationProperty Name="Targets" Relationship="GridProteinFoldingModel.FK_DataToProcess_Targets" FromRole="DataToProcess" ToRole="Targets" />
+        </EntityType>
+        <EntityType Name="DataToResult">
+          <Key>
+            <PropertyRef Name="process_guid" />
+          </Key>
+          <Property Name="process_guid" Type="Guid" Nullable="false" />
+          <Property Name="valueDivResult" Type="Int32" Nullable="false" />
+          <Property Name="valueDiscard" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Process" Relationship="GridProteinFoldingModel.FK_DataToResult_Process" FromRole="DataToResult" ToRole="Process" />
+        </EntityType>
+        <EntityType Name="Model">
+          <Key>
+            <PropertyRef Name="process_guid" />
+            <PropertyRef Name="monomero" />
+          </Key>
+          <Property Name="process_guid" Type="Guid" Nullable="false" />
+          <Property Name="monomero" Type="Byte" Nullable="false" />
+          <Property Name="value" Type="Double" Nullable="false" />
+          <NavigationProperty Name="Process" Relationship="GridProteinFoldingModel.FK_Model_Process" FromRole="Model" ToRole="Process" />
+        </EntityType>
+        <EntityType Name="ModelType">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Byte" Nullable="false" />
+          <Property Name="type" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="DataToProcess" Relationship="GridProteinFoldingModel.FK_DataToProcess_ModelType" FromRole="ModelType" ToRole="DataToProcess" />
+        </EntityType>
+        <EntityType Name="Output">
+          <Key>
+            <PropertyRef Name="guid" />
+          </Key>
+          <Property Name="guid" Type="Guid" Nullable="false" />
+          <Property Name="evolution" Type="Boolean" Nullable="false" />
+          <Property Name="distribution" Type="Boolean" Nullable="false" />
+          <Property Name="configuration" Type="Boolean" Nullable="false" />
+          <Property Name="debug" Type="Boolean" Nullable="false" />
+          <Property Name="histogram" Type="Boolean" Nullable="false" />
+          <Property Name="trajectory" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Process" Relationship="GridProteinFoldingModel.FK_Output_Process" FromRole="Output" ToRole="Process" />
+        </EntityType>
+        <EntityType Name="Process">
+          <Key>
+            <PropertyRef Name="guid" />
+          </Key>
+          <Property Name="guid" Type="Guid" Nullable="false" />
+          <Property Name="guidFather" Type="Guid" />
+          <Property Name="date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="userId" Type="Guid" Nullable="false" />
+          <Property Name="status_id" Type="Byte" Nullable="false" />
+          <Property Name="emailNotification" Type="Byte" Nullable="false" />
+          <Property Name="note" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="label" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="crypt" Type="Boolean" Nullable="false" />
+          <Property Name="macAddr" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="configApp_id" Type="Int32" Nullable="false" />
+          <Property Name="machineName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="ConfigApp" Relationship="GridProteinFoldingModel.FK_Process_ConfigApp" FromRole="Process" ToRole="ConfigApp" />
+          <NavigationProperty Name="Configuration" Relationship="GridProteinFoldingModel.FK_Configuration_Process" FromRole="Process" ToRole="Configuration" />
+          <NavigationProperty Name="DataToProcess" Relationship="GridProteinFoldingModel.FK_DataToProcess_Process" FromRole="Process" ToRole="DataToProcess" />
+          <NavigationProperty Name="DataToResult" Relationship="GridProteinFoldingModel.FK_DataToResult_Process" FromRole="Process" ToRole="DataToResult" />
+          <NavigationProperty Name="Model" Relationship="GridProteinFoldingModel.FK_Model_Process" FromRole="Process" ToRole="Model" />
+          <NavigationProperty Name="Output" Relationship="GridProteinFoldingModel.FK_Output_Process" FromRole="Process" ToRole="Output" />
+          <NavigationProperty Name="Blob" Relationship="GridProteinFoldingModel.FK_Blob_Process" FromRole="Process" ToRole="Blob" />
+          <NavigationProperty Name="Process1" Relationship="GridProteinFoldingModel.FK_Process_Process" FromRole="Process" ToRole="Process1" />
+          <NavigationProperty Name="Process2" Relationship="GridProteinFoldingModel.FK_Process_Process" FromRole="Process1" ToRole="Process" />
+          <NavigationProperty Name="Status" Relationship="GridProteinFoldingModel.FK_Process_Status" FromRole="Process" ToRole="Status" />
+          <NavigationProperty Name="ProcessLog" Relationship="GridProteinFoldingModel.FK_ProcessLog_Process" FromRole="Process" ToRole="ProcessLog" />
+        </EntityType>
+        <EntityType Name="ProcessLog">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="process_guid" Type="Guid" Nullable="false" />
+          <Property Name="date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="status_id" Type="Byte" Nullable="false" />
+          <Property Name="who" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Process" Relationship="GridProteinFoldingModel.FK_ProcessLog_Process" FromRole="ProcessLog" ToRole="Process" />
+        </EntityType>
+        <EntityType Name="Status">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Byte" Nullable="false" />
+          <Property Name="description" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Process" Relationship="GridProteinFoldingModel.FK_Process_Status" FromRole="Status" ToRole="Process" />
+        </EntityType>
+        <EntityType Name="Targets">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="description" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="DataToProcess" Relationship="GridProteinFoldingModel.FK_DataToProcess_Targets" FromRole="Targets" ToRole="DataToProcess" />
+          <NavigationProperty Name="TargetsCoordinates" Relationship="GridProteinFoldingModel.FK_targetsCoordinates_Targets" FromRole="Targets" ToRole="TargetsCoordinates" />
+        </EntityType>
+        <EntityType Name="TargetsCoordinates">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="targets_id" Type="Int32" Nullable="false" />
+          <Property Name="value" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Targets" Relationship="GridProteinFoldingModel.FK_targetsCoordinates_Targets" FromRole="TargetsCoordinates" ToRole="Targets" />
+        </EntityType>
+        <EntityType Name="Blob">
+          <Key>
+            <PropertyRef Name="process_guid" />
+          </Key>
+          <Property Name="process_guid" Type="Guid" Nullable="false" />
+          <Property Name="blob1" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <NavigationProperty Name="Process" Relationship="GridProteinFoldingModel.FK_Blob_Process" FromRole="Blob" ToRole="Process" />
+        </EntityType>
+        <Association Name="FK_Process_ConfigApp">
+          <End Type="GridProteinFoldingModel.ConfigApp" Role="ConfigApp" Multiplicity="1" />
+          <End Type="GridProteinFoldingModel.Process" Role="Process" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ConfigApp">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Process">
+              <PropertyRef Name="configApp_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Configuration_Process">
+          <End Type="GridProteinFoldingModel.Process" Role="Process" Multiplicity="1" />
+          <End Type="GridProteinFoldingModel.Configuration" Role="Configuration" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Process">
+              <PropertyRef Name="guid" />
+            </Principal>
+            <Dependent Role="Configuration">
+              <PropertyRef Name="process_guid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DataToProcess_ModelType">
+          <End Type="GridProteinFoldingModel.ModelType" Role="ModelType" Multiplicity="1" />
+          <End Type="GridProteinFoldingModel.DataToProcess" Role="DataToProcess" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ModelType">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="DataToProcess">
+              <PropertyRef Name="modelType" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DataToProcess_Process">
+          <End Type="GridProteinFoldingModel.Process" Role="Process" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="GridProteinFoldingModel.DataToProcess" Role="DataToProcess" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Process">
+              <PropertyRef Name="guid" />
+            </Principal>
+            <Dependent Role="DataToProcess">
+              <PropertyRef Name="process_guid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DataToProcess_Targets">
+          <End Type="GridProteinFoldingModel.Targets" Role="Targets" Multiplicity="0..1" />
+          <End Type="GridProteinFoldingModel.DataToProcess" Role="DataToProcess" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Targets">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="DataToProcess">
+              <PropertyRef Name="targets_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DataToResult_Process">
+          <End Type="GridProteinFoldingModel.Process" Role="Process" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="GridProteinFoldingModel.DataToResult" Role="DataToResult" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Process">
+              <PropertyRef Name="guid" />
+            </Principal>
+            <Dependent Role="DataToResult">
+              <PropertyRef Name="process_guid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Model_Process">
+          <End Type="GridProteinFoldingModel.Process" Role="Process" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="GridProteinFoldingModel.Model" Role="Model" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Process">
+              <PropertyRef Name="guid" />
+            </Principal>
+            <Dependent Role="Model">
+              <PropertyRef Name="process_guid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Output_Process">
+          <End Type="GridProteinFoldingModel.Process" Role="Process" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="GridProteinFoldingModel.Output" Role="Output" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Process">
+              <PropertyRef Name="guid" />
+            </Principal>
+            <Dependent Role="Output">
+              <PropertyRef Name="guid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Blob_Process">
+          <End Type="GridProteinFoldingModel.Process" Role="Process" Multiplicity="1" />
+          <End Type="GridProteinFoldingModel.Blob" Role="Blob" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Process">
+              <PropertyRef Name="guid" />
+            </Principal>
+            <Dependent Role="Blob">
+              <PropertyRef Name="process_guid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Process_Process">
+          <End Type="GridProteinFoldingModel.Process" Role="Process" Multiplicity="0..1" />
+          <End Type="GridProteinFoldingModel.Process" Role="Process1" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Process">
+              <PropertyRef Name="guid" />
+            </Principal>
+            <Dependent Role="Process1">
+              <PropertyRef Name="guidFather" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Process_Status">
+          <End Type="GridProteinFoldingModel.Status" Role="Status" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="GridProteinFoldingModel.Process" Role="Process" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Status">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Process">
+              <PropertyRef Name="status_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProcessLog_Process">
+          <End Type="GridProteinFoldingModel.Process" Role="Process" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="GridProteinFoldingModel.ProcessLog" Role="ProcessLog" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Process">
+              <PropertyRef Name="guid" />
+            </Principal>
+            <Dependent Role="ProcessLog">
+              <PropertyRef Name="process_guid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_targetsCoordinates_Targets">
+          <End Type="GridProteinFoldingModel.Targets" Role="Targets" Multiplicity="1" />
+          <End Type="GridProteinFoldingModel.TargetsCoordinates" Role="TargetsCoordinates" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Targets">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="TargetsCoordinates">
+              <PropertyRef Name="targets_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="GridProteinFoldingModelStoreContainer" CdmEntityContainer="GridProteinFoldingEntities">
+          <FunctionImportMapping FunctionImportName="BunkFiles" FunctionName="GridProteinFoldingModel.Store.BunkFiles" />
+          <FunctionImportMapping FunctionImportName="BunkFiles02" FunctionName="GridProteinFoldingModel.Store.BunkFiles02" />
+          <EntitySetMapping Name="ClientCurrentVersion">
+            <EntityTypeMapping TypeName="GridProteinFoldingModel.ClientCurrentVersion">
+              <MappingFragment StoreEntitySet="ClientCurrentVersion">
+                <ScalarProperty Name="currentVersion" ColumnName="currentVersion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ConfigApp">
+            <EntityTypeMapping TypeName="GridProteinFoldingModel.ConfigApp">
+              <MappingFragment StoreEntitySet="ConfigApp">
+                <ScalarProperty Name="dateTime" ColumnName="dateTime" />
+                <ScalarProperty Name="randomMagicNumber" ColumnName="randomMagicNumber" />
+                <ScalarProperty Name="randomEqualOne" ColumnName="randomEqualOne" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Configuration">
+            <EntityTypeMapping TypeName="GridProteinFoldingModel.Configuration">
+              <MappingFragment StoreEntitySet="Configuration">
+                <ScalarProperty Name="z" ColumnName="z" />
+                <ScalarProperty Name="y" ColumnName="y" />
+                <ScalarProperty Name="x" ColumnName="x" />
+                <ScalarProperty Name="order" ColumnName="order" />
+                <ScalarProperty Name="mcStep" ColumnName="mcStep" />
+                <ScalarProperty Name="process_guid" ColumnName="process_guid" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DataToProcess">
+            <EntityTypeMapping TypeName="GridProteinFoldingModel.DataToProcess">
+              <MappingFragment StoreEntitySet="DataToProcess">
+                <ScalarProperty Name="splitFileEvery" ColumnName="splitFileEvery" />
+                <ScalarProperty Name="recPathEvery" ColumnName="recPathEvery" />
+                <ScalarProperty Name="temperature" ColumnName="temperature" />
+                <ScalarProperty Name="targets_id" ColumnName="targets_id" />
+                <ScalarProperty Name="beta" ColumnName="beta" />
+                <ScalarProperty Name="valueOfDelta" ColumnName="valueOfDelta" />
+                <ScalarProperty Name="modelType" ColumnName="modelType" />
+                <ScalarProperty Name="maxMotionPeerIsem" ColumnName="maxMotionPeerIsem" />
+                <ScalarProperty Name="file" ColumnName="file" />
+                <ScalarProperty Name="process_guid" ColumnName="process_guid" />
+                <ScalarProperty Name="maxInterations" ColumnName="maxInterations" />
+                <ScalarProperty Name="isem" ColumnName="isem" />
+                <ScalarProperty Name="totalSitio" ColumnName="totalSitio" />
+                <ScalarProperty Name="loadDatFile" ColumnName="loadDatFile" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DataToResult">
+            <EntityTypeMapping TypeName="GridProteinFoldingModel.DataToResult">
+              <MappingFragment StoreEntitySet="DataToResult">
+                <ScalarProperty Name="valueDiscard" ColumnName="valueDiscard" />
+                <ScalarProperty Name="valueDivResult" ColumnName="valueDivResult" />
+                <ScalarProperty Name="process_guid" ColumnName="process_guid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Model">
+            <EntityTypeMapping TypeName="GridProteinFoldingModel.Model">
+              <MappingFragment StoreEntitySet="Model">
+                <ScalarProperty Name="value" ColumnName="value" />
+                <ScalarProperty Name="monomero" ColumnName="monomero" />
+                <ScalarProperty Name="process_guid" ColumnName="process_guid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ModelType">
+            <EntityTypeMapping TypeName="GridProteinFoldingModel.ModelType">
+              <MappingFragment StoreEntitySet="ModelType">
+                <ScalarProperty Name="type" ColumnName="type" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Output">
+            <EntityTypeMapping TypeName="GridProteinFoldingModel.Output">
+              <MappingFragment StoreEntitySet="Output">
+                <ScalarProperty Name="trajectory" ColumnName="trajectory" />
+                <ScalarProperty Name="histogram" ColumnName="histogram" />
+                <ScalarProperty Name="debug" ColumnName="debug" />
+                <ScalarProperty Name="configuration" ColumnName="configuration" />
+                <ScalarProperty Name="distribution" ColumnName="distribution" />
+                <ScalarProperty Name="evolution" ColumnName="evolution" />
+                <ScalarProperty Name="guid" ColumnName="guid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Process">
+            <EntityTypeMapping TypeName="GridProteinFoldingModel.Process">
+              <MappingFragment StoreEntitySet="Process">
+                <ScalarProperty Name="machineName" ColumnName="machineName" />
+                <ScalarProperty Name="configApp_id" ColumnName="configApp_id" />
+                <ScalarProperty Name="macAddr" ColumnName="macAddr" />
+                <ScalarProperty Name="crypt" ColumnName="crypt" />
+                <ScalarProperty Name="label" ColumnName="label" />
+                <ScalarProperty Name="note" ColumnName="note" />
+                <ScalarProperty Name="emailNotification" ColumnName="emailNotification" />
+                <ScalarProperty Name="status_id" ColumnName="status_id" />
+                <ScalarProperty Name="userId" ColumnName="userId" />
+                <ScalarProperty Name="date" ColumnName="date" />
+                <ScalarProperty Name="guidFather" ColumnName="guidFather" />
+                <ScalarProperty Name="guid" ColumnName="guid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ProcessLog">
+            <EntityTypeMapping TypeName="GridProteinFoldingModel.ProcessLog">
+              <MappingFragment StoreEntitySet="ProcessLog">
+                <ScalarProperty Name="who" ColumnName="who" />
+                <ScalarProperty Name="status_id" ColumnName="status_id" />
+                <ScalarProperty Name="date" ColumnName="date" />
+                <ScalarProperty Name="process_guid" ColumnName="process_guid" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Status">
+            <EntityTypeMapping TypeName="GridProteinFoldingModel.Status">
+              <MappingFragment StoreEntitySet="Status">
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Targets">
+            <EntityTypeMapping TypeName="GridProteinFoldingModel.Targets">
+              <MappingFragment StoreEntitySet="Targets">
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TargetsCoordinates">
+            <EntityTypeMapping TypeName="GridProteinFoldingModel.TargetsCoordinates">
+              <MappingFragment StoreEntitySet="TargetsCoordinates">
+                <ScalarProperty Name="value" ColumnName="value" />
+                <ScalarProperty Name="targets_id" ColumnName="targets_id" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Blob">
+            <EntityTypeMapping TypeName="GridProteinFoldingModel.Blob">
+              <MappingFragment StoreEntitySet="Blob">
+                <ScalarProperty Name="blob1" ColumnName="blob" />
+                <ScalarProperty Name="process_guid" ColumnName="process_guid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="true" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

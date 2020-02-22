@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="a7921858-510b-4f24-ac22-c46d7158776d" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:8080/GridProteinFolding/ServiceDistributed/DocumentManagmentMex" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="DocumentManagment.wsdl" MetadataType="Wsdl" ID="5ada40c2-19d6-429b-a07e-0581240d8456" SourceId="1" SourceUrl="http://localhost:8080/GridProteinFolding/ServiceDistributed/DocumentManagmentMex?wsdl" />
+    <MetadataFile FileName="DocumentManagmentMex.xsd" MetadataType="Schema" ID="15ba36fb-133d-4f4c-a832-04246ad714a1" SourceId="1" SourceUrl="http://localhost:8080/GridProteinFolding/ServiceDistributed/DocumentManagmentMex?xsd=xsd1" />
+    <MetadataFile FileName="DocumentManagmentMex1.xsd" MetadataType="Schema" ID="1b8993ea-d11d-44f1-8bce-8be11135ab9b" SourceId="1" SourceUrl="http://localhost:8080/GridProteinFolding/ServiceDistributed/DocumentManagmentMex?xsd=xsd0" />
+    <MetadataFile FileName="DocumentManagmentMex.disco" MetadataType="Disco" ID="007391dc-9ace-41be-a75f-d75dbe67c63f" SourceId="1" SourceUrl="http://localhost:8080/GridProteinFolding/ServiceDistributed/DocumentManagmentMex?disco" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

@@ -1,0 +1,15 @@
+﻿DELETE FROM dbo.ProcessLog
+UPDATE dbo.DataToProcess SET maxInterations=100000 WHERE modelType=1
+UPDATE dbo.DataToResult SET valueDivResult=10000 WHERE process_guid in (SELECT process_guid FROM dbo.DataToProcess WHERE modelType=1)
+UPDATE dbo.Process SET status_id=1 WHERE guid in (SELECT process_guid FROM dbo.DataToProcess WHERE modelType=1)
+
+UPDATE dbo.DataToProcess SET temperature=0.3 WHERE process_guid='3C120085-681F-4AF6-A91A-0797DE9752ED'
+UPDATE dbo.DataToProcess SET temperature=5 WHERE process_guid='E65B7AC4-F8BF-4C16-824E-1EC164A85770'
+UPDATE dbo.DataToProcess SET temperature=2 WHERE process_guid='C04CACF7-6730-43F2-B020-620F9C4593D0' 
+UPDATE dbo.DataToProcess SET temperature=3 WHERE process_guid='1D2A971B-7FA1-434E-8814-74FD0F15A409'
+UPDATE dbo.DataToProcess SET temperature=1 WHERE process_guid='163FEBC4-A87D-4C16-8206-AE58C8212DC1'
+
+SELECT * FROM dbo.Process WHERE guid in (SELECT process_guid FROM dbo.DataToProcess WHERE modelType=1)
+SELECT * FROM dbo.DataToProcess WHERE modelType=1	
+SELECT * FROM dbo.DataToResult WHERE process_guid in (SELECT process_guid FROM dbo.DataToProcess WHERE modelType=1)
+

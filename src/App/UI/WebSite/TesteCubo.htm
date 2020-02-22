@@ -1,0 +1,131 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <script type="text/javascript">
+        window.onload = startDemo;
+
+        function Point3D(x, y, z) {
+            this.x = (x);
+            this.y = (y);
+            this.z = (z);
+
+            this.scale = function (k) {
+                return new Point3D(x * k, y * k, z * k)
+            }
+
+            this.translate = function (tx, ty, tz) {
+                return new Point3D(x + tx, y + ty, z + tz)
+            }
+
+            this.rotateX = function (angle) {
+                var rad, cosa, sina, y, z
+                rad = angle * Math.PI / 180
+                cosa = Math.cos(rad)
+                sina = Math.sin(rad)
+                y = this.y * cosa - this.z * sina
+                z = this.y * sina + this.z * cosa
+                return new Point3D(this.x, y, z)
+            }
+
+            this.rotateY = function (angle) {
+                var rad, cosa, sina, x, z
+                rad = angle * Math.PI / 180
+                cosa = Math.cos(rad)
+                sina = Math.sin(rad)
+                z = this.z * cosa - this.x * sina
+                x = this.z * sina + this.x * cosa
+                return new Point3D(x, this.y, z)
+            }
+
+            this.rotateZ = function (angle) {
+                var rad, cosa, sina, x, y
+                rad = angle * Math.PI / 180
+                cosa = Math.cos(rad)
+                sina = Math.sin(rad)
+                x = this.x * cosa - this.y * sina
+                y = this.x * sina + this.y * cosa
+                return new Point3D(x, y, this.z)
+            }
+
+            this.project = function (viewWidth, viewHeight, fov) {
+                var factor, x, y
+                factor = fov / this.z
+                x = this.x * factor + viewWidth / 2
+                y = -this.y * factor + viewHeight / 2
+                return new Point3D(x, y, this.z)
+            }
+        }
+
+        var posInit = 100;
+
+        var vertices = [
+            new Point3D(1 * posInit, 1 * posInit, 1 * posInit),
+            new Point3D(2 * posInit, 1 * posInit, 1 * posInit),
+            new Point3D(3 * posInit, 1 * posInit, 1 * posInit),
+            new Point3D(3 * posInit, 2 * posInit, 1 * posInit),
+            new Point3D(2 * posInit, 2 * posInit, 1 * posInit),
+            new Point3D(1 * posInit, 2 * posInit, 1 * posInit),
+            new Point3D(1 * posInit, 3 * posInit, 1 * posInit),
+            new Point3D(2 * posInit, 3 * posInit, 1 * posInit),
+            new Point3D(3 * posInit, 3 * posInit, 1 * posInit),
+            new Point3D(0 * posInit, 3 * posInit, 2 * posInit),
+            new Point3D(2 * posInit, 3 * posInit, 2 * posInit),
+            new Point3D(1 * posInit, 3 * posInit, 2 * posInit),
+            new Point3D(1 * posInit, 2 * posInit, 2 * posInit),
+            new Point3D(1 * posInit, 1 * posInit, 2 * posInit),
+            new Point3D(2 * posInit, 1 * posInit, 2 * posInit),
+            new Point3D(3 * posInit, 1 * posInit, 2 * posInit),
+            new Point3D(3 * posInit, 2 * posInit, 2 * posInit),
+            new Point3D(2 * posInit, 2 * posInit, 2 * posInit),
+            new Point3D(2 * posInit, 2 * posInit, 3 * posInit),
+            new Point3D(2 * posInit, 1 * posInit, 3 * posInit),
+            new Point3D(3 * posInit, 1 * posInit, 3 * posInit),
+            new Point3D(3 * posInit, 2 * posInit, 3 * posInit),
+            new Point3D(3 * posInit, 3 * posInit, 3 * posInit),
+            new Point3D(2 * posInit, 3 * posInit, 3 * posInit),
+            new Point3D(1 * posInit, 3 * posInit, 3 * posInit),
+            new Point3D(1 * posInit, 2 * posInit, 3 * posInit),
+            new Point3D(1 * posInit, 1 * posInit, 3 * posInit)
+        ];
+
+
+        var angle = 0;
+
+        function startDemo() {
+            canvas = document.getElementById("tutorial");
+            if (canvas && canvas.getContext) {
+                ctx = canvas.getContext("2d");
+                setInterval(loop, 10);
+            }
+        }
+
+        function loop() {
+            ctx.fillStyle = "rgb(0,0,0)";
+            ctx.fillRect(0, 0, 800, 800);
+
+            for (var i = 0; i < vertices.length; i++) {
+                var v = vertices[i];
+
+                //block in comments
+                var r = v.rotateX(angle).rotateY(angle).rotateZ(angle).translate(0, 0, 0);//.scale(100);
+                var p = r.project(100, 100, 100);
+                ctx.fillStyle = "rgb(255,255,255)";
+                ctx.fillRect(p.x, p.y, 2, 2);
+
+                ctx.fillStyle = "rgb(255,255,255)";
+                ctx.fillRect(v.x, v.y, 2, 2);
+            }
+
+            //angle += 1;
+        }
+    </script>
+</head>
+<body>
+    <canvas id="tutorial" width="800" height="800">
+      O seu browser não suporta o elemento canvas do HTML5.
+      Por favor, atualize o seu browser.
+    </canvas>
+</body>
+</html>

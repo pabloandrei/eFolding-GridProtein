@@ -1,0 +1,8 @@
+9.0
+6
+1	SQLCHAR	0	0	"\t"	1	lenght	""
+2	SQLCHAR	0	0	"\t"	2	min		""
+3	SQLCHAR	0	0	"\t"	3	max		""
+4	SQLCHAR	0	0	"\t"	4	n		""
+5	SQLCHAR	0	0	"\t"	5	sum	RG	""
+6	SQLCHAR	0	0	"\r\n"	6	medium	RG	""

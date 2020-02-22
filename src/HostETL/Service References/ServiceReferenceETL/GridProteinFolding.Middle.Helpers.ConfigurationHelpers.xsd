@@ -1,0 +1,110 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:ser="http://schemas.microsoft.com/2003/10/Serialization/" xmlns:tns="http://schemas.datacontract.org/2004/07/GridProteinFolding.Middle.Helpers.ConfigurationHelpers" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/GridProteinFolding.Middle.Helpers.ConfigurationHelpers" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+  <xs:complexType name="Param">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="configApp" nillable="true" type="tns:ConfigApp" />
+      <xs:element minOccurs="0" name="dataToProcess" nillable="true" type="tns:DataToProcess" />
+      <xs:element minOccurs="0" name="dataToResults" nillable="true" type="tns:DataToResults" />
+      <xs:element minOccurs="0" name="files" nillable="true" type="tns:Files" />
+      <xs:element minOccurs="0" name="internalProcess" nillable="true" type="tns:InternalProcess" />
+      <xs:element minOccurs="0" name="model" nillable="true" type="tns:ArrayOfModel" />
+      <xs:element minOccurs="0" name="output" nillable="true" type="tns:Output" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Param" nillable="true" type="tns:Param" />
+  <xs:complexType name="ConfigApp">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="EqualOne" type="xs:double" />
+      <xs:element minOccurs="0" name="MagicNumber" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ConfigApp" nillable="true" type="tns:ConfigApp" />
+  <xs:complexType name="DataToProcess">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Guid" type="ser:guid" />
+      <xs:element minOccurs="0" name="beta" type="xs:double" />
+      <xs:element minOccurs="0" name="crypt" type="xs:boolean" />
+      <xs:element minOccurs="0" name="file" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="isem" type="xs:int" />
+      <xs:element minOccurs="0" name="loadDatFile" type="xs:boolean" />
+      <xs:element minOccurs="0" name="maxInterations" type="xs:int" />
+      <xs:element minOccurs="0" name="maxMotionPeerIsem" type="xs:long" />
+      <xs:element minOccurs="0" name="model" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="modelType" type="xs:unsignedByte" />
+      <xs:element minOccurs="0" name="recPathEvery" type="xs:int" />
+      <xs:element minOccurs="0" name="splitFileEvery" type="xs:int" />
+      <xs:element minOccurs="0" name="targets" nillable="true" type="tns:Targets" />
+      <xs:element minOccurs="0" name="temperature" type="xs:double" />
+      <xs:element minOccurs="0" name="totalSitio" type="xs:int" />
+      <xs:element minOccurs="0" name="valueOfDelta" type="xs:double" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DataToProcess" nillable="true" type="tns:DataToProcess" />
+  <xs:complexType name="Targets">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="description" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="id" type="xs:int" />
+      <xs:element minOccurs="0" name="targetsCoordinates" nillable="true" type="tns:ArrayOfTargetsCoordinates" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Targets" nillable="true" type="tns:Targets" />
+  <xs:complexType name="ArrayOfTargetsCoordinates">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="TargetsCoordinates" nillable="true" type="tns:TargetsCoordinates" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfTargetsCoordinates" nillable="true" type="tns:ArrayOfTargetsCoordinates" />
+  <xs:complexType name="TargetsCoordinates">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="id" type="xs:int" />
+      <xs:element minOccurs="0" name="targetsId" type="xs:int" />
+      <xs:element minOccurs="0" name="value" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="TargetsCoordinates" nillable="true" type="tns:TargetsCoordinates" />
+  <xs:complexType name="DataToResults">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="valueDiscard" type="xs:int" />
+      <xs:element minOccurs="0" name="valueDivResult" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DataToResults" nillable="true" type="tns:DataToResults" />
+  <xs:complexType name="Files">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Debug" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="count" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Files" nillable="true" type="tns:Files" />
+  <xs:complexType name="InternalProcess">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="stopWhenSoft" type="xs:boolean" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="InternalProcess" nillable="true" type="tns:InternalProcess" />
+  <xs:complexType name="ArrayOfModel">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Model" nillable="true" type="tns:Model" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfModel" nillable="true" type="tns:ArrayOfModel" />
+  <xs:complexType name="Model">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="monomero" type="xs:short" />
+      <xs:element minOccurs="0" name="value" type="xs:double" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Model" nillable="true" type="tns:Model" />
+  <xs:complexType name="Output">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="configuration" type="xs:boolean" />
+      <xs:element minOccurs="0" name="debug" type="xs:boolean" />
+      <xs:element minOccurs="0" name="distribution" type="xs:boolean" />
+      <xs:element minOccurs="0" name="evolution" type="xs:boolean" />
+      <xs:element minOccurs="0" name="histogram" type="xs:boolean" />
+      <xs:element minOccurs="0" name="trajectory" type="xs:boolean" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Output" nillable="true" type="tns:Output" />
+</xs:schema>

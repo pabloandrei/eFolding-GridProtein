@@ -1,0 +1,39 @@
+12.0 
+37
+1     SQLCHAR     0     3     " "      1     des1        SQL_Latin1_General_CP1_CI_AS
+2     SQLCHAR     0     3     " "      2     des2        SQL_Latin1_General_CP1_CI_AS
+3     SQLCHAR     0     3     " "      3     pos1        SQL_Latin1_General_CP1_CI_AS
+4     SQLCHAR     0     3     " "      4     des3        SQL_Latin1_General_CP1_CI_AS
+5     SQLCHAR     0     3     " "      5     pos2        SQL_Latin1_General_CP1_CI_AS
+6     SQLCHAR     0     3     " "      6     des4        SQL_Latin1_General_CP1_CI_AS
+7     SQLCHAR     0     3     " "      7     pos3        SQL_Latin1_General_CP1_CI_AS
+8     SQLCHAR     0     3     " "      8     des5        SQL_Latin1_General_CP1_CI_AS
+9     SQLCHAR     0     3     " "      9     pos4        SQL_Latin1_General_CP1_CI_AS
+10     SQLCHAR     0     3     " "      10     des6        SQL_Latin1_General_CP1_CI_AS
+11     SQLCHAR     0     3     " "      11     pos5        SQL_Latin1_General_CP1_CI_AS  
+12     SQLCHAR     0     3     " "      12     des7        SQL_Latin1_General_CP1_CI_AS
+13     SQLCHAR     0     3     " "      13     pos6        SQL_Latin1_General_CP1_CI_AS
+14     SQLCHAR     0     3     " "      14     des8        SQL_Latin1_General_CP1_CI_AS
+15     SQLCHAR     0     3     " "      15     pos7        SQL_Latin1_General_CP1_CI_AS
+16     SQLCHAR     0     3     " "      16     des9        SQL_Latin1_General_CP1_CI_AS
+17     SQLCHAR     0     3     " "      17     pos8        SQL_Latin1_General_CP1_CI_AS
+18     SQLCHAR     0     3     " "      18     des10        SQL_Latin1_General_CP1_CI_AS
+19     SQLCHAR     0     3     " "      19     pos9        SQL_Latin1_General_CP1_CI_AS
+20     SQLCHAR     0     3     " "      20     pos10       SQL_Latin1_General_CP1_CI_AS
+21     SQLCHAR     0     3     " "      21     pos11        SQL_Latin1_General_CP1_CI_AS
+22     SQLCHAR     0     3     " "      22     pos12        SQL_Latin1_General_CP1_CI_AS
+23     SQLCHAR     0     3     " "      23     pos13        SQL_Latin1_General_CP1_CI_AS
+24     SQLCHAR     0     3     " "      24     pos14        SQL_Latin1_General_CP1_CI_AS
+25     SQLCHAR     0     3     " "      25     pos15        SQL_Latin1_General_CP1_CI_AS
+26     SQLCHAR     0     3     " "      26     pos16        SQL_Latin1_General_CP1_CI_AS
+27     SQLCHAR     0     3     " "      27     pos17        SQL_Latin1_General_CP1_CI_AS
+28     SQLCHAR     0     3     " "      28     pos18        SQL_Latin1_General_CP1_CI_AS
+29     SQLCHAR     0     3     " "      29     pos19        SQL_Latin1_General_CP1_CI_AS
+30     SQLCHAR     0     3     " "      30     pos20        SQL_Latin1_General_CP1_CI_AS
+31     SQLCHAR     0     3     " "      31     pos21        SQL_Latin1_General_CP1_CI_AS
+32     SQLCHAR     0     3     " "      32     pos22        SQL_Latin1_General_CP1_CI_AS
+33     SQLCHAR     0     3     " "      33     pos23        SQL_Latin1_General_CP1_CI_AS
+34     SQLCHAR     0     3     " "      34     pos24        SQL_Latin1_General_CP1_CI_AS
+35     SQLCHAR     0     3     " "      35     pos25        SQL_Latin1_General_CP1_CI_AS
+36     SQLCHAR     0     3     " "      36     pos26        SQL_Latin1_General_CP1_CI_AS
+37     SQLCHAR     0     3     "\r\n"      37     pos27        SQL_Latin1_General_CP1_CI_AS

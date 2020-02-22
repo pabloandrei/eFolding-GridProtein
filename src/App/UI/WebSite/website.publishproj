@@ -1,0 +1,81 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--
+
+***********************************************************************************************
+website.publishproj
+
+WARNING: DO NOT MODIFY this file, it is used for the web publish process.
+
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+***********************************************************************************************
+-->
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>10.0.30319</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{c154ffb6-e5fd-4d22-b882-c2980e342952}</ProjectGuid>
+    <SourceWebPhysicalPath>$(MSBuildThisFileDirectory)</SourceWebPhysicalPath>
+    <SourceWebVirtualPath>/WebSite</SourceWebVirtualPath>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <SourceWebProject>
+    </SourceWebProject>
+    <SourceWebMetabasePath>
+    </SourceWebMetabasePath>
+  </PropertyGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <!-- for VS2010 we need to use 10.5 but for VS2012+ we should use VisualStudioVersion -->
+    <WebPublishTargetsVersion Condition=" '$(WebPublishTargetsVersion)' =='' and '$(VisualStudioVersion)' == 10.0 ">10.5</WebPublishTargetsVersion>
+    <WebPublishTargetsVersion Condition=" '$(WebPublishTargetsVersion)'=='' ">$(VisualStudioVersion)</WebPublishTargetsVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(WebPublishTargetsVersion)</VSToolsPath>
+    <_WebPublishTargetsPath Condition=" '$(_WebPublishTargetsPath)'=='' ">$(VSToolsPath)</_WebPublishTargetsPath>
+    <AssemblyFileVersion Condition="'$(AssemblyFileVersion)' == ''">1.0.0.0</AssemblyFileVersion>
+    <AssemblyVersion Condition="'$(AssemblyVersion)' == ''">1.0.0.0</AssemblyVersion>
+  </PropertyGroup>
+  <ItemGroup>
+    <AssemblyAttributes Include="AssemblyFileVersion">
+      <Value>$(AssemblyFileVersion)</Value>
+    </AssemblyAttributes>
+    <AssemblyAttributes Include="AssemblyVersion">
+      <Value>$(AssemblyVersion)</Value>
+    </AssemblyAttributes>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Entities\Entities\Entities.csproj">
+      <Project>{E82E2446-0C22-4A0B-8CCB-07C6724CD745}</Project>
+      <Name>Entities</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Middle\Helpers\CompressionHelpers\CompressionHelpers.csproj">
+      <Project>{57A3EC4A-FEAC-483D-92CA-23DB44A558EB}</Project>
+      <Name>CompressionHelpers</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Middle\Helpers\ConfigurationHelpers\ConfigurationHelpers.csproj">
+      <Project>{07CF19D8-7431-4442-8FB0-C87844B72CC1}</Project>
+      <Name>ConfigurationHelpers</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Middle\Helpers\CryptographyHelpers\CryptographyHelpers.csproj">
+      <Project>{253111D4-48E7-4C16-B67D-DFF7837D8EC1}</Project>
+      <Name>CryptographyHelpers</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Middle\Helpers\IOHelpers\IOHelpers.csproj">
+      <Project>{B6866011-E04A-4DE1-8612-D90BF87C4EC9}</Project>
+      <Name>IOHelpers</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Middle\Helpers\NetworkHelpers\NetworkHelpers.csproj">
+      <Project>{EB08541C-521C-4647-82DF-723913BFEC57}</Project>
+      <Name>NetworkHelpers</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Middle\Helpers\RegistryHelpers\RegistryHelpers.csproj">
+      <Project>{08268B87-2650-4F69-ABEB-71FAC91A9B6E}</Project>
+      <Name>RegistryHelpers</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Middle\Helpers\TypesHelpers\TypesHelpers.csproj">
+      <Project>{D1E2CFC4-5771-49C4-B81F-2F30988AF90F}</Project>
+      <Name>TypesHelpers</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(_WebPublishTargetsPath)\Web\Microsoft.WebSite.Publishing.targets" />
+</Project>
